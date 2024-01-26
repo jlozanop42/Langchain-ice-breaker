@@ -13,24 +13,23 @@ On November 2, 2023, in the case of United States v. Bankman-Fried, he was convi
 """
 
 if __name__ == '__main__':
-     print('Hello Langchain')
+    print ("Hello LangChain")
 
-     # summary_template = """
-     #     given the information {information} about a person from I want you to create
-     #     1. a short summary
-     #     2. two interesting facts about them
-     # """
-     #
-     # summary_prompt_template = PromptTemplate(input_variables = ["information"], template = summary_template)
-     #
-     # llm = ChatOpenAI(temperature = 0, model_name = "gpt-3.5-turbo")
-     #
-     # chain = LLMChain(llm = llm, prompt = summary_prompt_template)
-     #
-     # print(chain.run(information=information))
+    summary_template = """
+         given the Linkedin information {information} about a person from I want you to create:
+         1. a short summary
+         2. two interesting facts about them
+     """
 
-sebastian_data = scrape_linkedin_profile()
-print(sebastian_data.json())
+    summary_prompt_template = PromptTemplate(input_variables=["information"], template=summary_template)
 
-#linkedin_data = scrape_linkedin_profile_with_curl_proxy(linkedin_profile_url="https://www.linkedin.com/in/nvaz/")
-#print(linkedin_data)
+    llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
+
+    chain = LLMChain(llm=llm, prompt=summary_prompt_template)
+
+    linkedin_data = scrape_linkedin_profile()
+
+    print(chain.run(information=linkedin_data))
+
+# linkedin_data = scrape_linkedin_profile_with_curl_proxy(linkedin_profile_url="https://www.linkedin.com/in/nvaz/")
+# print(linkedin_data)
