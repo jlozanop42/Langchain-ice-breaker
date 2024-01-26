@@ -26,7 +26,7 @@ def scrape_linkedin_profile():
     return data
 
 
-# To use the proxycurl linkedin feature
+# To use the proxycurl linkedin feature. https://nubela.co/proxycurl/dashboard/proxycurl-api/api-key/
 def scrape_linkedin_profile_with_curl_proxy(linkedin_profile_url: str):
     """scrape information from LinkedIn profiles,
     Manually scrape the information from the LinkedIn profile"""
