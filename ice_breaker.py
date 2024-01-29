@@ -8,16 +8,15 @@ from third_parties1.linkedin import (
 )
 from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
 
-if __name__ == "__main__":
-    print("Hello LangChain")
 
-    linkedin_profile_url = linkedin_lookup_agent(name="Sebastian Lozano Test Automation Publicis Sapient")
+def ice_break(name: str) -> str:
+    linkedin_profile_url = linkedin_lookup_agent(name=name)
 
     summary_template = """
-         given the Linkedin information {information} about a person from I want you to create:
-         1. a short summary
-         2. two interesting facts about them
-     """
+             given the Linkedin information {information} about a person from I want you to create:
+             1. a short summary
+             2. two interesting facts about them
+         """
 
     summary_prompt_template = PromptTemplate(
         input_variables=["information"], template=summary_template
@@ -27,12 +26,17 @@ if __name__ == "__main__":
 
     chain = LLMChain(llm=llm, prompt=summary_prompt_template)
 
-    # linkedin_data = scrape_linkedin_profile()
-    linkedin_data = scrape_linkedin_profile_with_curl_proxy(
-        linkedin_profile_url=linkedin_profile_url
-    )
+    linkedin_data = scrape_linkedin_profile()
+    # linkedin_data = scrape_linkedin_profile_with_curl_proxy(
+    #    linkedin_profile_url=linkedin_profile_url
+    # )
 
     print(chain.run(information=linkedin_data))
+
+
+if __name__ == "__main__":
+    print("Hello LangChain")
+    ice_break("Sebastian Lozano Publicis Sapient")
 
 # linkedin_data = scrape_linkedin_profile_with_curl_proxy(linkedin_profile_url="https://www.linkedin.com/in/nvaz/")
 # print(linkedin_data)
