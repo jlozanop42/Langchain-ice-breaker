@@ -38,10 +38,10 @@ def ice_break(name: str) -> Tuple[PersonIntel, str]:
 
     chain = LLMChain(llm=llm, prompt=summary_prompt_template)
 
-    linkedin_data = scrape_linkedin_profile()
-    # linkedin_data = scrape_linkedin_profile_with_curl_proxy(
-    #    linkedin_profile_url=linkedin_profile_url
-    # )
+    #linkedin_data = scrape_linkedin_profile()
+    linkedin_data = scrape_linkedin_profile_with_curl_proxy(
+        linkedin_profile_url=linkedin_profile_url
+    )
 
     result = chain.run(information=linkedin_data)
     print(result)
