@@ -3,11 +3,16 @@ from ice_breaker import ice_break
 
 app = Flask(__name__)
 
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-@app.route("/process", method=["POST"])
+@app.route("/process", methods=["POST"])
 def process():
     name = request.form["name"]
     person_info, profile_pic_url = ice_break(name=name)
+    print("Personal information when clicking the button")
+    print(person_info)
 
     return jsonify(
         {
