@@ -36,7 +36,8 @@ class CustomSerpAPIWrapper(SerpAPIWrapper):
             toret = "No good search result found"
         return toret
 
-#SerpAPI: https://serpapi.com
+
+# SerpAPI: https://serpapi.com
 def get_profile_url(name: str):
     """Searches for Linkedin Profile Page."""
     search = CustomSerpAPIWrapper()
