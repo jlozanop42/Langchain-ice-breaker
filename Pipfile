@@ -9,6 +9,7 @@ requests = "*"
 black = "*"
 openai = "*"
 google-search-results = "*"
+flask = "*"
 
 [dev-packages]
 
